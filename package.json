@@ -1,0 +1,104 @@
+{
+  "name": "ollama-ui",
+  "displayName": "Ollama UI",
+  "description": "VS Code extension for interacting with Ollama models",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ollama.startChat",
+        "title": "Ollama: Start Chat",
+        "category": "Ollama"
+      },
+      {
+        "command": "ollama.selectModel",
+        "title": "Ollama: Select Model",
+        "category": "Ollama"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ollama-ui",
+          "title": "Ollama UI",
+          "icon": "./media/ollama.svg"
+        }
+      ]
+    },
+    "views": {
+      "ollama-ui": [
+        {
+          "type": "webview",
+          "id": "ollama-ui.chatView",
+          "name": "Chat"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Ollama UI",
+      "properties": {
+        "ollama-ui.modelPath": {
+          "type": "string",
+          "default": "E:\\ollama\\models",
+          "description": "Path to Ollama models directory"
+        },
+        "ollama-ui.serverUrl": {
+          "type": "string",
+          "default": "http://localhost:11434",
+          "description": "Ollama server URL"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/css-tree": "^2.3.9",
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "20.x",
+    "@types/node-fetch": "^2.6.12",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "@vscode/test-electron": "^2.3.8",
+    "acorn": "^8.14.0",
+    "acorn-walk": "^8.3.4",
+    "css-tree": "^3.1.0",
+    "eslint": "^8.56.0",
+    "glob": "^7.2.0",
+    "mocha": "^10.2.0",
+    "node-html-parser": "^6.1.13",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.7.2",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "diff": "^5.1.0",
+    "minimatch": "^3.1.2",
+    "node-fetch": "^2.7.0",
+    "ollama": "^0.4.9",
+    "vscode-languageclient": "^8.1.0"
+  }
+}
