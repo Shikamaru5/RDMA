@@ -20,18 +20,21 @@ An intelligent coding assistant powered by Ollama models, providing capabilities
 
 ## Setup
 
-1. Install dependencies:
+1. clone vscode:
+Make sure to clone vscode, I only did a shallow clone of it because I don't have a lot of space in memory for such a download and don't need the fully thing but whatever you feel like doing.
+
+3. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-2. Install Node.js dependencies:
+3. Install Node.js dependencies:
 ```bash
 cd frontend
 npm install
 ```
 
-3. Configure Ollama:
+4. Configure Ollama:
 Make sure Ollama is installed and the models are available:
 - qwen2.5-coder:7b
 - hermes3:8b
